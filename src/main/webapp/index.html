@@ -2,24 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
-<form action="AdminServlet/login">
-	<button type="submit">Login</button>
-</form>
-<form action="StudentServlet" method="get">
+	<div align="right">
+		<form action="login">
+			<button type="submit">Admin Login</button>
+		</form>
+	</div>
+	<div align="center">
+		<form action="StudentServlet" method="get">
 
-		<!-- <div>
-			<label for="uname"><b>Username</b></label>
-			 <input type="text"
-				placeholder="Enter Username" name="uname" required> <br>
-			<label for="psw"><b>Password</b></label>
-			 <input type="password"
-				placeholder="Enter Password" name="psw" required> <br>
-			<button type="submit">Login</button>
-		</div> -->
+			<div>
+				<label for="uname"><b>Reg No.</b></label> 
+				<input type="number"
+					placeholder="Enter Reg No." name="regNo" required> <br>
+				<button type="submit">Search</button>
+			</div>
 
-	</form>
+		</form>
+	</div>
 </body>
 </html>

@@ -1,9 +1,9 @@
 package model;
 
 public class GradeCard {
-	private int language;
+	private int languageMark;
 
-	private int Mathematics;
+	private int mathematicsMark;
 
 	private int physicsMark;
 	private int chemistryMark;
@@ -19,19 +19,19 @@ public class GradeCard {
 	private int averageMark;
 
 	public int getLanguage() {
-		return language;
+		return languageMark;
 	}
 
-	public void setLanguage(int language) {
-		this.language = language;
+	public void setLanguage(int languageMark) {
+		this.languageMark = languageMark;
 	}
 
 	public int getMathematics() {
-		return Mathematics;
+		return mathematicsMark;
 	}
 
-	public void setMathematics(int mathematics) {
-		Mathematics = mathematics;
+	public void setMathematics(int mathematicsMark) {
+		this.mathematicsMark = mathematicsMark;
 	}
 
 	public int getPhysicsMark() {

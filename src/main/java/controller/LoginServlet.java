@@ -76,13 +76,6 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
 			dispatcher.forward(request, response);
 		}
-//		try (FileWriter file = new FileWriter(getServletContext().getRealPath("/") + "adminCred.json")) {
-//			file.write(admin.toJSONString());
-//			file.flush();
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 	}
 
 }

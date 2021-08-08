@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import model.Admin;
 
 /**
  * Servlet implementation class LoginServlet
@@ -45,28 +44,37 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String loginUsername = request.getParameter("username");
+		String loginPassword = request.getParameter("password");
 //		System.out.println(getServletContext().getRealPath("/"));
 //		JSONObject admin = new JSONObject();
 //		admin.put("username", username);
 //		admin.put("password", password);
+		String savedUsername = null;
+		String savedPass = null;
 		try (FileReader reader = new FileReader(getServletContext().getRealPath("/") + "adminCred.json")) {
-			// Read JSON file
-			Object obj = JSONParser.parse(reader);
-
-			Admin admin = (Admin) obj;
-			System.out.println(admin);
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(reader);
+			JSONObject admin = (JSONObject) obj;
+//			System.out.println(admin.get("username"));
+			savedUsername = (String) admin.get("username");
+			savedPass = (String) admin.get("password");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if (loginUsername.equals(savedUsername) && loginPassword.equals(savedPass)) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("student_list.html");
+			dispatcher.forward(request, response);
+		} else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
+			dispatcher.forward(request, response);
 		}
 //		try (FileWriter file = new FileWriter(getServletContext().getRealPath("/") + "adminCred.json")) {
 //			file.write(admin.toJSONString());
@@ -75,8 +83,6 @@ public class LoginServlet extends HttpServlet {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
-		dispatcher.forward(request, response);
 	}
 
 }

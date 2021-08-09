@@ -71,8 +71,11 @@ public class CreateStudentServlet extends HttpServlet {
 		student.put("history", historyMark);
 		student.put("geography", geographyMark);
 		student.put("total", total);
-		student.put("total", average);
+		student.put("average", average);
+		JSONObject studentObject = new JSONObject();
+		studentObject.put("student", student);
 		JSONArray studentList = new JSONArray();
+		System.out.print(getServletContext().getRealPath("/"));
 		try (FileReader reader = new FileReader(getServletContext().getRealPath("/") + "students.json")) {
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(reader);
@@ -86,7 +89,8 @@ public class CreateStudentServlet extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		studentList.add(student);
+		studentList.add(studentObject);
+		System.out.println(studentList);
 		try (FileWriter file = new FileWriter(getServletContext().getRealPath("/") + "students.json")) {
 			file.write(studentList.toJSONString());
 			file.flush();

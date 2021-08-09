@@ -1,4 +1,4 @@
-package model;
+package project2;
 
 public class Student {
 	public String name;

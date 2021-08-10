@@ -29,6 +29,7 @@
 			<th><b>Name</b></th>
 			<th><b>Language</b></th>
 			<th><b>Maths</b></th>
+			
 			<th><b>Physics</b></th>
 			<th><b>Biology</b></th>
 			<th><b>Chemistry</b></th>

@@ -41,7 +41,6 @@ public class StudentListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		JSONArray students = new JSONArray();
-		System.out.print(getServletContext().getRealPath("/"));
 		try (FileReader reader = new FileReader(getServletContext().getRealPath("/") + "students.json")) {
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(reader);
@@ -54,27 +53,9 @@ public class StudentListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		ArrayList<JSONObject> studentList = new ArrayList<JSONObject>();
-//		for(JSONObject std:students) {
-//			
-//		}
 		students.forEach(student -> {
 			studentList.add(parseStudent((JSONObject) student));
 		});
-//			Student std=new Student();
-//			 JSONObject employeeObject = (JSONObject) employee.get("employee");
-//			 JSONObject employeeObject = (JSONObject) student.get("employee");
-//			std.name=(String)student.get("name");
-//			student.put("regNo", request.getParameter("regNo"));
-//			student.put("language", langMark);
-//			student.put("maths", mathsMark);
-//			student.put("physics", physicsMark);
-//			student.put("chemistry", chemistryMark);
-//			student.put("biology", biologyMark);
-//			student.put("history", historyMark);
-//			student.put("geography", geographyMark);
-//			student.put("total", total);
-//			student.put("average", average);
-//		}
 		request.setAttribute("studentList", studentList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("student_list.jsp");
 		dispatcher.forward(request, response);

@@ -3,21 +3,21 @@ package model;
 public class Student {
 	public String name;
 	public String regNo;
-	public int languageMark;
+	public int language;
 
-	public int mathematicsMark;
+	public int maths;
 
-	public int physicsMark;
-	public int chemistryMark;
+	public int physics;
+	public int chemistry;
 
-	public int biologyMark;
+	public int biology;
 
-	public int historyMark;
+	public int history;
 
-	public int geographyMark;
+	public int geography;
 
-	public int totalMark;
+	public int total;
 
-	public int averageMark;
+	public int average;
 
 }
